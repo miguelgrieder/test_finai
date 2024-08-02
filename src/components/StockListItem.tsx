@@ -1,7 +1,14 @@
-import { Text } from './Themed';
+import {Text, View} from './Themed';
+import {MonoText} from "@/src/components/StyledText";
+import {StyleSheet} from "react-native";
+import Colors from '../constants/Colors'
+import {AntDesign} from "@expo/vector-icons";
 
 type Stock =  {
-    name: String
+    name: string;
+    symbol: string;
+    close: string;
+    percent_change: string;
 }
 
 type StockListItem = {
@@ -9,5 +16,39 @@ type StockListItem = {
 }
 
 export default function StockListItem({ stock }: StockListItem) {
-    return <Text> {stock.name} {stock.close} </Text>;
+
+    const change = Number.parseFloat(stock.percent_change);
+
+    return (
+        <View style={styles.container}>
+            {/* Left container */}
+            <View style={{flex: 1, gap: 5}}>
+                <Text style={styles.symbol}>
+                    {stock.symbol} <AntDesign name="star" size={18} color="gray" />
+                </Text>
+                <Text style={{ color: 'gray' }}> {stock.name} </Text>
+            </View>
+
+            {/* Right container */}
+            <View style={{alignItems: 'flex-end'}}>
+                <MonoText>${Number.parseFloat(stock.close).toFixed(1)}</MonoText>
+                <MonoText style={{color: change > 0 ? 'green' : 'red' }}>
+                    {change > 0 ? '+' : ''}
+                    {change.toFixed(1)}%
+                </MonoText>
+            </View>
+        </View>
+    );
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+    },
+    symbol: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: Colors.light.tint,
+    }
+})
