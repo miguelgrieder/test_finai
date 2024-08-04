@@ -4,6 +4,7 @@ import {useLocalSearchParams} from "expo-router";
 import top5 from '@/assets/data/top5.json'
 import StockListItem from "@/src/components/StockListItem";
 import {Stack} from "expo-router";
+import Graph from "@/src/components/Graph";
 
 const StockDetails = () => {
     const {symbol} = useLocalSearchParams()
@@ -16,6 +17,7 @@ const StockDetails = () => {
         <View style={{padding: 10}}>
             <Stack.Screen options={{ title: stock.symbol, headerBackTitleVisible: false}} />
             <StockListItem stock={stock} />
+            <Graph/>
         </View>
     )
 }
