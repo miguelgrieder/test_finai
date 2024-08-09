@@ -1,7 +1,5 @@
-import Colors from '../constants/Colors';
 import { View, Text } from './Themed';
 import { LineGraph, GraphPoint } from 'react-native-graph';
-import timeseries from '@/assets/data/timeseries.json';
 import { MonoText } from './StyledText';
 import { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
@@ -29,7 +27,7 @@ const Graph = ({ symbol }: { symbol: string }) => {
   });
 
   if (loading) {
-    return <ActivityIndicator />;
+    return <Text>Loading...</Text>;
   }
   if (error) {
     return <Text>Error</Text>;
