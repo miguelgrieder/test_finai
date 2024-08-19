@@ -5,6 +5,7 @@ import { Stack }  from "expo-router";
 import StockListItem from "@/src/components/StockListItem";
 
 import { useQuery, gql } from '@apollo/client';
+import {useTranslation} from "react-i18next";
 
 const query = gql`
   query MyQuery($symbol: String) {
@@ -24,6 +25,8 @@ export default function TabOneScreen() {
   const { data, loading, error } = useQuery(query, {
     variables: { symbol: 'AAPL,IBM,META,NVDA,TSLA,AMD' },
   });
+    const {t} = useTranslation();
+
 
   if (loading) {
     return <ActivityIndicator />;
@@ -36,7 +39,7 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{title: 'Stocks'}} />
+      <Stack.Screen options={{title: t('page_stocks')}} />
       <FlatList
         data={stocks}
         renderItem={({ item }) => <StockListItem stock={item} />}
