@@ -1,7 +1,0 @@
-configurationset:
-  - configuration:
-      name: postgresql_config
-      uri: <uri>
-  - configuration:
-      name: twelvedata
-      Authorization: apikey <apikey>
