@@ -5,9 +5,9 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import {GestureHandlerRootView} from "react-native-gesture-handler";
-import { ApolloProvider } from "@apollo/client"
-import client from "@/src/apollo/client"
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { ApolloProvider } from '@apollo/client';
+import client from '@/src/apollo/client';
 
 import { useColorScheme } from '@/src/components/useColorScheme';
 

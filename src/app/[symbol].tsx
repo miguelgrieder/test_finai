@@ -1,9 +1,9 @@
-import {View, Text} from '@/src/components/Themed';
-import React from "react";
-import {useLocalSearchParams} from "expo-router";
-import StockListItem from "@/src/components/StockListItem";
-import {Stack} from "expo-router";
-import Graph from "@/src/components/Graph";
+import { View, Text } from '@/src/components/Themed';
+import React from 'react';
+import { useLocalSearchParams } from 'expo-router';
+import StockListItem from '@/src/components/StockListItem';
+import { Stack } from 'expo-router';
+import Graph from '@/src/components/Graph';
 import { useQuery, gql } from '@apollo/client';
 import { ActivityIndicator } from 'react-native';
 
@@ -18,7 +18,7 @@ const query = gql`
   }
 `;
 const StockDetails = () => {
-  const {symbol} = useLocalSearchParams()
+  const { symbol } = useLocalSearchParams();
 
   const { data, loading, error } = useQuery(query, { variables: { symbol } });
 
@@ -31,13 +31,13 @@ const StockDetails = () => {
   }
   const stock = data.quote;
 
-    return (
-        <View style={{padding: 10}}>
-            <Stack.Screen options={{ title: stock.symbol, headerBackTitleVisible: false}} />
-            <StockListItem stock={stock} />
-            <Graph symbol={stock.symbol} />
-        </View>
-    )
-}
+  return (
+    <View style={{ padding: 10 }}>
+      <Stack.Screen options={{ title: stock.symbol, headerBackTitleVisible: false }} />
+      <StockListItem stock={stock} />
+      <Graph symbol={stock.symbol} />
+    </View>
+  );
+};
 
 export default StockDetails;
