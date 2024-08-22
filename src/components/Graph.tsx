@@ -3,7 +3,6 @@ import { LineGraph, GraphPoint } from 'react-native-graph';
 import { MonoText } from './StyledText';
 import { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
-import { ActivityIndicator } from 'react-native';
 
 const query = gql`
   query MyQuery($symbol: String!, $interval: String!) {
